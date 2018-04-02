@@ -47,18 +47,21 @@ class LineAnalyzer
   #  store that in the highest_wf_words attribute.
   public def calculate_word_frequency
     lineData = Hash.new(0)
-    content.each do |word|
+    wordsArray = content.split
+    p wordsArray
+
+    wordsArray.each do |word|
       lineData[word] += 1
-      if lineData[word] > highest_wf_count
-        highest_wf_count = lineData[word]
-        highest_wf_words = []
-        highest_wf_words.push(word)
-      elsif lineData[word] == highest_wf_count
-        highest_wf_words.push(word)
+      if lineData[word] > @highest_wf_count
+        @highest_wf_count = lineData[word]
+        @highest_wf_words = []
+        @highest_wf_words.push(word)
+      elsif lineData[word] == @highest_wf_count
+        @highest_wf_words.push(word)
       end
     end
+
   end
-  @highest_wf_count
 end
 
 #  Implement a class called Solution. 
@@ -69,9 +72,10 @@ class Solution
   #* highest_count_across_lines - a number with the maximum value for highest_wf_words attribute in the analyzers array.
   #* highest_count_words_across_lines - a filtered array of LineAnalyzer objects with the highest_wf_words attribute 
   #  equal to the highest_count_across_lines determined previously.
+  attr_reader :analyzers, :highest_count_across_lines, :highest_count_words_across_lines
 
   # Implement the following methods in the Solution class.
-  #* analyze_file() - processes 'test.txt' intro an array of LineAnalyzers and stores them in analyzers.
+  #* analyze_file() - processes 'test.txt' into an array of LineAnalyzers and stores them in analyzers.
   #* calculate_line_with_highest_frequency() - determines the highest_count_across_lines and 
   #  highest_count_words_across_lines attribute values
   #* print_highest_word_frequency_across_lines() - prints the values of LineAnalyzer objects in 
@@ -80,6 +84,10 @@ class Solution
   # Implement the analyze_file() method() to:
   #* Read the 'test.txt' file in lines 
   #* Create an array of LineAnalyzers for each line in the file
+  def analyze_file
+    textFile = 'test.txt'
+    
+  end
 
   # Implement the calculate_line_with_highest_frequency() method to:
   #* calculate the maximum value for highest_wf_count contained by the LineAnalyzer objects in analyzers array
@@ -92,4 +100,6 @@ class Solution
 end
 
 
-testLineAnalyzer = LineAnalyzer.new('this is test string', 1)
+# testLineAnalyzer = LineAnalyzer.new('This is a really really really cool cool you you you', 2)
+# puts testLineAnalyzer.highest_wf_count
+# print testLineAnalyzer.highest_wf_words

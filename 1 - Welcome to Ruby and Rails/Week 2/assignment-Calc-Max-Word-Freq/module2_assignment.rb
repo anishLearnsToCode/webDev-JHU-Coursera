@@ -9,20 +9,56 @@ class LineAnalyzer
   #* line_number      - the line number analyzed (provided)
   attr_reader :highest_wf_count, :highest_wf_words, :content, :line_number
 
+  def highest_wf_count= (new_highest_wf_count)
+    @highest_wf_count = new_highest_wf_count
+  end
+
+  def highest_wf_words= (new_highest_wf_words)
+    @highest_wf_words = new_highest_wf_words
+  end
+
+  def content= (new_content)
+    @content = new_content
+  end
+
+  def line_number= (new_line_number)
+    @line_number = new_line_number
+  end
+
   #Add the following methods in the LineAnalyzer class.
   #* initialize() - taking a line of text (content) and a line number
-  #* calculate_word_frequency() - calculates result
-
   #Implement the initialize() method to:
   #* take in a line of text and line number
   #* initialize the content and line_number attributes
   #* call the calculate_word_frequency() method.
+  def initialize(content, line_number)
+    self.highest_wf_count = 0
+    self.highest_wf_words = []
+    self.content = content.chomp
+    self.line_number = line_number
+    calculate_word_frequency
+  end
 
+  #* calculate_word_frequency() - calculates result
   #Implement the calculate_word_frequency() method to:
   #* calculate the maximum number of times a single word appears within
   #  provided content and store that in the highest_wf_count attribute.
   #* identify the words that were used the maximum number of times and
   #  store that in the highest_wf_words attribute.
+  public def calculate_word_frequency
+    lineData = Hash.new(0)
+    content.each do |word|
+      lineData[word] += 1
+      if lineData[word] > highest_wf_count
+        highest_wf_count = lineData[word]
+        highest_wf_words = []
+        highest_wf_words.push(word)
+      elsif lineData[word] == highest_wf_count
+        highest_wf_words.push(word)
+      end
+    end
+  end
+  @highest_wf_count
 end
 
 #  Implement a class called Solution. 
@@ -54,3 +90,6 @@ class Solution
   #Implement the print_highest_word_frequency_across_lines() method to
   #* print the values of objects in highest_count_words_across_lines in the specified format
 end
+
+
+testLineAnalyzer = LineAnalyzer.new('this is test string', 1)

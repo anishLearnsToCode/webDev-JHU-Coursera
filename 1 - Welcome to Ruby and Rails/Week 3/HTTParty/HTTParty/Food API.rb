@@ -1,3 +1,6 @@
+require 'httparty'
+require 'pp'
+
 class Coursera
   include HTTParty
 
@@ -9,5 +12,3 @@ class Coursera
     get('', querry: {querry: term})['elements']
   end
 end
-
-pp Coursera.for "a"

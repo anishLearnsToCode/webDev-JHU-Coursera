@@ -1,2 +1,19 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<h1><%= @search_term.upcase %></h1>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+  <tr>
+    <td>Publisher</td>
+    <td>Image</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= recipe['publisher'] %></td>
+    <td class="table-image"><%= image_tag(recipe['image_url'])%></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

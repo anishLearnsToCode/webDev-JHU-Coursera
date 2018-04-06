@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'courses' => 'courses#index'
+  root 'courses#index'
 
-  root 'greeter#hello'
+  get 'courses' => 'courses#index'
+  # get 'courses/:search_item' => 'courses#index'
   get 'hello' => 'greeter#hello'
   get 'goodbye' => 'greeter#goodbye'
 

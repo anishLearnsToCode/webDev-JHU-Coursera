@@ -13,4 +13,18 @@ class Coursera
   end
 end
 
-pp Coursera.for "a"
+pp 'hello there'
+# pp Coursera.for "a"
+
+class Person
+  attr_accessor :first_name, :last_name, :age
+
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
+end
+
+person = Person.new('Anish', 'Sachdeva', 20)
+pp person

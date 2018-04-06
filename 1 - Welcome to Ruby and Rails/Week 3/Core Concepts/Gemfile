@@ -39,6 +39,9 @@ gem 'hirb'
 # Adding HTTParty to integrate REST API's
 gem 'httparty'
 
+# Adding super pretty Print
+gem 'pp'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
